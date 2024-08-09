@@ -1,5 +1,5 @@
 <script setup>
-import {reactive, ref, toRef, toRefs} from "vue";
+import {computed, reactive, ref, toRef, toRefs} from "vue";
 /*
  This is an Icon that you can use to represent the stars if you like
  otherwise you could just use a simple ⭐️ emoji, or * character.
@@ -140,6 +140,13 @@ const handleEdit = (movie) => {
 const deleteMovie = (index) => {
   movies.value.splice(index, 1);
 }
+const avgRatings = computed(() => {
+  const ratings = movies.value.map(movie => movie.rating);
+  const total = ratings.reduce((acc, curr) => {
+    return acc + curr
+  }, 0);
+  return (total / ratings.length).toFixed(2)
+});
 </script>
 
 <template>
@@ -224,6 +231,7 @@ const deleteMovie = (index) => {
     </div>
     <div class="movie-actions-list-wrapper">
       <div class="flex-spacer"></div>
+      <div class="text-white mr-2">{{ avgRatings }} Avg Ratings</div>
       <div class="movie-actions-list-actions">
         <button
             class="movie-actions-list-action-button"
