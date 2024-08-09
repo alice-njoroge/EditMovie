@@ -137,6 +137,9 @@ const handleEdit = (movie) => {
   form.id = movie.id
   showForm();
 }
+const deleteMovie = (index) => {
+  movies.value.splice(index, 1);
+}
 </script>
 
 <template>
@@ -301,7 +304,7 @@ const handleEdit = (movie) => {
           </div>
           <div class="flex justify-end w-full">
             <PencilIcon class="h-4 mr-1" @click="handleEdit(movie)"></PencilIcon>
-            <TrashIcon class="h-4"></TrashIcon>
+            <TrashIcon class="h-4" @click="deleteMovie(movieIndex)"></TrashIcon>
           </div>
         </div>
       </div>
