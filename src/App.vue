@@ -147,6 +147,9 @@ const avgRatings = computed(() => {
   }, 0);
   return (total / ratings.length).toFixed(2)
 });
+const totalMovies = computed(() => {
+  return movies.value.length;
+})
 </script>
 
 <template>
@@ -231,7 +234,8 @@ const avgRatings = computed(() => {
     </div>
     <div class="movie-actions-list-wrapper">
       <div class="flex-spacer"></div>
-      <div class="text-white mr-2">{{ avgRatings }} Avg Ratings</div>
+      <div class="text-white mr-2">Avg Ratings: {{ avgRatings }}</div>
+      <div class="text-white mr-2">Total: {{totalMovies}} </div>
       <div class="movie-actions-list-actions">
         <button
             class="movie-actions-list-action-button"
